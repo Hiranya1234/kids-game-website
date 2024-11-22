@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>Home</title>
+    <link href="img/kidsZone.png" rel="icon">
+    <style>
+        body,
+        html {
+            width: 100%;
+            margin: 0%;
+            background-image: url('img/bg9.jpg');
+            background-repeat: no-repeat;
+            background-size: 1366px 656px;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .sDiv {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            border-radius: 20%;
+            border: 2px solid black;
+            transition: width linear 0.5s;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 250px 250px;
+        }
+
+        .div1 {
+            animation: mymovedown 2s;
+            animation-fill-mode: forwards;
+            visibility: hidden;
+            animation-delay: 0.5s;
+            background-image: url(img/abc.jpg);
+        }
+
+        .div2 {
+            animation: mymoveup 2s;
+            animation-fill-mode: forwards;
+            visibility: hidden;
+            animation-delay: 2.5s;
+            background-image: url(img/123.jpg);
+        }
+
+        .div3 {
+            animation: mymove 2s;
+            animation-fill-mode: forwards;
+            visibility: hidden;
+            animation-delay: 4.5s;
+            background-image: url(img/colors3.jpg);
+        }
+
+        @keyframes mymovedown {
+            from {
+                top: 0px;
+            }
+
+            to {
+                top: 200px;
+                visibility: visible;
+            }
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes mymove {
+            from {
+                top: 200px;
+            }
+
+            to {
+                top: 200px;
+                visibility: visible;
+            }
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes mymoveup {
+            from {
+                top: 400px;
+            }
+
+            to {
+                top: 200px;
+                visibility: visible;
+            }
+
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0.9;
+            }
+        }
+
+        .grow {
+            transition: all .2s ease-in-out;
+        }
+
+        .grow:hover {
+            transform: scale(1.5);
+        }
+
+        #player-container #play-pause {
+            cursor: pointer;
+            text-indent: -999999px;
+            height: 100px;
+            width: 100px;
+            /* padding: 12px 18px; */
+            z-index: 2;
+            background-image: url(img/mute.png);
+            background-repeat: no-repeat !important;
+            /* background-position: center; */
+            /* background-size: 16px; */
+            background-repeat: no-repeat;
+            /* background-position: center; */
+            background-size: 70px;
+            /* background-color: gainsboro; */
+            float: right;
+            margin-right: 45px;
+            margin-top: 50px;
+        }
+
+        .play {
+            background-image: url(img/mute.png);
+        }
+
+        .pause {
+            background-image: url(img/sound.png) !important;
+        }
+        
+    </style>
+    <script defer>
+        function ABC() {
+		  var gameOne = document.getElementById("3-game1.html");
+          localStorage.setItem("game", gameOne.getAttribute('id'));
+		}
+        function number() {
+		  var gameOne = document.getElementById("4-game2.html");
+          localStorage.setItem("game", gameOne.getAttribute('id'));
+		}
+        function color() {
+		  var gameOne = document.getElementById("5-game3.html");
+          localStorage.setItem("game", gameOne.getAttribute('id'));
+		}
+    </script>
+</head>
+
+<body>
+
+    <audio id="track">
+        <source src="audio/backgroundSound.mp3" type="audio/mpeg" />
+    </audio>
+    <div id="player-container">
+        <div id="play-pause" class="play">Play</div>
+    </div>
+    <script defer>
+        var track = document.getElementById('track');
+        var controlBtn = document.getElementById('play-pause');
+        track.play();
+        controlBtn.className = "pause";
+        function playPause() {
+            if (track.paused) {
+                track.play();
+                controlBtn.className = "pause";
+            }
+            else {
+                track.pause();
+                controlBtn.className = "play";
+            }
+        }
+        controlBtn.addEventListener("click", playPause);
+        track.addEventListener("ended", function () {
+            controlBtn.className = "play";
+            playPause();
+        });
+    </script>
+
+    <div class="container mx-auto text-center">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <a href="2-login.html" onclick="ABC()" id="3-game1.html">
+                    <button type="button" class="div1 mx-auto sDiv btn grow"></button>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <a href="2-login.html" onclick="color()" id="5-game3.html">
+                    <button type="button" class="div3 mx-auto sDiv btn grow"></button>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <a href="2-login.html" onclick="number()" id="4-game2.html">
+                    <button type="button" class="div2 mx-auto sDiv btn grow"></button>
+                </a>
+            </div>
+        </div>
+        
+        
+    </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Quiz</title>
+<style>
+    body {
+        text-align: center;
+        margin: 0;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-color: #9de6f7;
+    }
+    h2 {
+        font-size: 40px;
+        color: #024b55;
+        margin: 20px 0;
+    }
+    .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+    .box {
+        width: 240px;
+        height: 240px;
+        border: 6px dashed #024b55;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+        font-size: 28px;
+        color: #45c3ed;
+    }
+    .box:hover {
+        background-color: #45c3ed;
+    }
+    .box img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    #well-done-message {
+        display: none;
+        font-size: 48px;
+        color: #4caf50;
+        margin-top: 30px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px #000;
+        position: relative;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .image-container img {
+        margin: 10px;
+        cursor: grab;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: 3px solid #45c3ed;
+        border-radius: 15px;
+    }
+    .image-container img:active {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .star {
+        width: 30px;
+        height: 30px;
+        background: url('star.png') no-repeat center center / contain;
+        position: absolute;
+        animation: pop 1s ease-out forwards;
+        pointer-events: none;
+    }
+    @keyframes pop {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(2); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<h2 id="equation-header">Solve the equations:</h2>
+<div id="equation">
+    <span id="num1"></span> + <span id="num2"></span>
+</div>
+<div class="container">
+    <button id="option1" class="box"></button>
+    <button id="option2" class="box"></button>
+    <button id="option3" class="box"></button>
+</div>
+<audio id="myAudio" src="error.mp3"></audio>
+<div id="message"></div> <!-- Add this div for completion message -->
+<button id="subtractionButton" style="display:none;">Start Subtraction</button> <!-- Add this button for starting subtraction -->
+
+<script>
+    const option1 = document.getElementById("option1"),
+          option2 = document.getElementById("option2"),
+          option3 = document.getElementById("option3"),
+          audio = document.getElementById("myAudio"),
+          message = document.getElementById("message"),
+          subtractionButton = document.getElementById("subtractionButton"),
+          equationHeader = document.getElementById("equation-header");
+
+    var answer = 0;
+    var equationCount = 0;
+    var isAddition = true;
+
+    function generate_equation(){ 
+      if (equationCount >= 5) {
+        if (isAddition) {
+          message.innerHTML = "Well done! You have completed 5 addition equations.";
+          subtractionButton.style.display = "block"; // Show the button to start subtraction
+          return; // Stop generating new equations
+        } else {
+          message.innerHTML = "Well done! You have completed 5 subtraction equations.";
+          return; // Stop generating new equations
+        }
+      }
+
+      var num1 = Math.floor(Math.random() * 13),
+          num2 = Math.floor(Math.random() * 13),
+          dummyAnswer1 = Math.floor(Math.random() * 10),
+          dummyAnswer2 = Math.floor(Math.random() * 10),
+          allAnswers = [],
+          switchAnswers = [];
+
+      if (isAddition) {
+        answer = num1 + num2;
+        equationHeader.innerText = "Solve the addition equations:";
+      } else {
+        answer = num1 - num2;
+        equationHeader.innerText = "Solve the subtraction equations:";
+        // Ensure the subtraction result is non-negative
+        if (answer < 0) {
+          answer = Math.abs(answer);
+          [num1, num2] = [num2, num1]; // Swap num1 and num2 if necessary
+        }
+      }
+      
+      document.getElementById("num1").innerHTML = num1; 
+      document.getElementById("num2").innerHTML = num2; 
+
+      allAnswers = [answer, dummyAnswer1, dummyAnswer2];
+
+      for (i = allAnswers.length; i--;){
+        switchAnswers.push(allAnswers.splice(Math.floor(Math.random() * (i + 1)), 1)[0]);
+      };
+
+      option1.innerHTML = switchAnswers[0];
+      option2.innerHTML = switchAnswers[1];
+      option3.innerHTML = switchAnswers[2]; 
+      
+      equationCount++; // Increment counter
+    };
+
+    option1.addEventListener("click", function(){
+        if(parseInt(option1.innerHTML) == answer){
+          generate_equation();
+        } else {
+          audio.play();
+        }
+    });
+
+    option2.addEventListener("click", function(){
+        if(parseInt(option2.innerHTML) == answer){
+          generate_equation();
+        } else {
+          audio.play();
+        }
+    });
+
+    option3.addEventListener("click", function(){
+        if(parseInt(option3.innerHTML) == answer){
+          generate_equation();
+        } else {
+          audio.play();
+        }
+    });
+
+    subtractionButton.addEventListener("click", function() {
+      isAddition = false;
+      equationCount = 0;
+      message.innerHTML = "";
+      subtractionButton.style.display = "none";
+      generate_equation();
+    });
+
+    generate_equation();
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Completion Page</title>
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-color: #fce4ec; /* Light pink background */
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #ff4081; /* Bright pink color */
+    }
+
+    .message {
+        margin-bottom: 30px;
+    }
+
+    .message p {
+        font-size: 24px;
+        color: #4caf50; /* Bright green color */
+    }
+
+    .image-container {
+        margin-top: 50px;
+    }
+
+    .image-container img {
+        width: 200px;
+        height: auto;
+    }
+
+    .button-container {
+        margin-top: 50px;
+    }
+
+    .button-container button {
+        background-color: #ff80ab; /* Light pink */
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .button-container button:hover {
+        background-color: #ff4081; /* Bright pink */
+    }
+
+    .success-message {
+        color: #4caf50; /* Bright green color */
+        font-size: 20px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Congratulations!</h1>
+
+<div class="message">
+    <p>You've completed all activities in this category!</p>
+    <p>Great job!</p>
+</div>
+
+<div class="image-container">
+    <img src="20.png" alt="Celebration Image">
+</div>
+
+<div class="button-container">
+    <button onclick="goToNextCategory()">Go to Home Category</button>
+    <button id="easy">Submit Completion</button>
+</div>
+
+<div id="successMessage" class="success-message"></div>
+
+<script>
+    function goToNextCategory() {
+        // You can add logic here to redirect to the next category or any other action
+        window.location.href = "1.html";
+    }
+
+    document.getElementById('easy').addEventListener('click', function() {
+        // Display success message
+        document.getElementById('successMessage').textContent = 'Successfully Completed';
+    });
+</script>
+<script type="module" src="scripts.js"></script>
+
+</body>
+</html>

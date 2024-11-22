@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drag and Drop Example</title>
+<style>
+    body {
+        text-align: center;
+        margin: 0;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-color: #9de6f7;
+    }
+    h2 {
+        font-size: 40px;
+        color: #024b55;
+        margin: 20px 0;
+    }
+    .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+    .box {
+        width: 240px;
+        height: 240px;
+        border: 6px dashed #024b55;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+        font-size: 28px;
+        color: #45c3ed;
+    }
+    .box:hover {
+        background-color: #45c3ed;
+    }
+    .box img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    #well-done-message {
+        display: none;
+        font-size: 48px;
+        color: #4caf50;
+        margin-top: 30px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px #000;
+        position: relative;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .image-container img {
+        margin: 10px;
+        cursor: grab;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: 3px solid #45c3ed;
+        border-radius: 15px;
+    }
+    .image-container img:active {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .star {
+        width: 100px;
+        height: 100px;
+        background: url('star.png') no-repeat center center / contain;
+        position: absolute;
+        animation: pop 1s ease-out forwards;
+        pointer-events: none;
+    }
+    @keyframes pop {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(2); opacity: 0; }
+    }
+
+    button {
+        position: fixed;
+        bottom: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: #024b55;
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+    #previousButton {
+        left: 20px;
+    }
+
+    #nextButton {
+        right: 20px;
+        display: none; /* Initially hide the Next button */
+    }
+
+    button:hover {
+        background-color: #45c3ed;
+    }
+</style>
+</head>
+<body>
+
+<h2>Drag the images into the relevant box:</h2>
+<img id="drag1" src="Red_Apple.jpg" draggable="true" ondragstart="drag(event)" width="200" height="200" alt="Apple">
+<img id="drag2" src="strawberry.jpg" draggable="true" ondragstart="drag(event)" width="200" height="200" alt="Strawberry">
+<img id="drag3" src="Mango.jpg" draggable="true" ondragstart="drag(event)" width="200" height="200" alt="Mango">
+
+
+<div class="container">
+    <div class="box" id="box1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Strawberry
+    </div>
+    <div class="box" id="box2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Mango
+    </div>
+    <div class="box" id="box3" ondrop="drop(event)" ondragover="allowDrop(event)">
+        Apple
+    </div>
+</div>
+
+<a href="51.html"><button id="previousButton">Previous</button></a>
+<a href="60.html"><button id="nextButton">Next</button></a> <!-- Initially hidden -->
+<div id="well-done-message">Well Done!</div>
+
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var draggedImage = document.getElementById(data);
+        var dropTarget = ev.target;
+        var imageCategory = draggedImage.alt.toLowerCase();
+        var boxText = dropTarget.innerText.trim().toLowerCase();
+        if (dropTarget.classList.contains('box') && imageCategory === boxText) {
+            dropTarget.innerHTML = ''; 
+            dropTarget.appendChild(draggedImage.cloneNode(true));
+            draggedImage.parentNode.removeChild(draggedImage);
+            checkCompletion();
+        }
+    }
+
+    function checkCompletion() {
+        var boxes = document.querySelectorAll('.box');
+        var allFilled = true;
+
+        boxes.forEach(function(box) {
+            if (box.children.length === 0) {
+                allFilled = false;
+            }
+        });
+
+        if (allFilled) {
+            document.getElementById('well-done-message').style.display = 'block';
+            document.getElementById('nextButton').style.display = 'block'; // Show the Next button
+            popStars();
+        }
+    }
+
+    function popStars() {
+        var message = document.getElementById('well-done-message');
+        for (var i = 0; i < 10; i++) {
+            var star = document.createElement('div');
+            star.className = 'star';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            message.appendChild(star);
+            setTimeout((function(star) {
+                return function() { message.removeChild(star); };
+            })(star), 1000);
+        }
+    }
+</script>
+
+</body>
+</html>

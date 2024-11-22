@@ -1,0 +1,79 @@
+/* General body styling */
+body {
+  font-family: 'Luckiest Guy', cursive;
+  text-align: center;
+  background-color: #ffe4b5; /* Set background color to a light yellow */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+/* Game container styling */
+#game-container {
+  margin-top: 100px;
+}
+
+/* Animal image styling */
+#animal-image {
+  width: 300px; /* Enlarge the image width */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px; /* Increase margin bottom for spacing */
+  border-radius: 10px; /* Add border-radius for a rounded look */
+  border: 5px solid #ffcc00; /* Add a yellow border */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+}
+
+/* Options container styling */
+.options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  background-color: #fff; /* Set options background to white */
+  padding: 20px; /* Add padding for spacing */
+  border-radius: 10px; /* Add border-radius for a rounded look */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+}
+
+/* Individual option styling */
+.option {
+  padding: 15px; /* Increase padding for larger clickable area */
+  border: 2px solid #ffd700; /* Set border color to gold */
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffd700; /* Set option background to gold */
+  font-size: 24px; /* Increase font size for options */
+}
+
+/* Hover effect for options */
+.option:hover {
+  background-color: #ffdb58; /* Lighten background color on hover */
+  color: white; /* Text color on hover */
+}
+
+/* Score display styling */
+#score {
+  font-size: 24px; /* Increase font size for better visibility */
+  margin-top: 20px;
+}
+h4 {
+  font-size: 40px;
+  color: #D2691E; /* Chocolate */
+  margin: 20px 0;
+}
+
+/* Button styling */
+.btn {
+  margin-top: 50px;
+  display: inline-block;
+  background-color: #ff4500;
+  color: #fff;
+  padding: 12px 24px;
+  font-size: 24px; /* Increase font size for buttons */
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s; /* Fixed transition property */
+}
+
+.btn:hover {
+  background-color: #ff6347;
+  transform: scale(1.1);
+}

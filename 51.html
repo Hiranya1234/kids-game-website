@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drag and Drop Activity</title>
+<style>
+    body {
+        text-align: center;
+        margin: 0;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-color: #fce4ec; /* Light pink background */
+    }
+    h2 {
+        font-size: 40px;
+        color: #ff4081; /* Bright pink color */
+        margin: 20px 0;
+    }
+    .container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+    .box {
+        width: 240px;
+        height: 240px;
+        border: 6px dashed #ff80ab; /* Light pink dashed border */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 20px;
+        transition: background-color 0.3s;
+        font-size: 28px; /* Larger font size for box text */
+        color: #ff4081; /* Bright pink color for box text */
+    }
+    .box:hover {
+        background-color: #f8bbd0; /* Light pink hover effect */
+    }
+    .box img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    #well-done-message {
+        display: none;
+        font-size: 48px;
+        color: #4caf50; /* Bright green color */
+        margin-top: 30px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px #000;
+        position: relative;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .image-container img {
+        margin: 10px;
+        cursor: grab;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: 3px solid #ff80ab; /* Light pink border */
+        border-radius: 15px;
+    }
+    .image-container img:active {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .star {
+        width: 100px;
+        height: 100px;
+        background: url('star.png') no-repeat center center / contain;
+        position: absolute;
+        animation: pop 1s ease-out forwards;
+        pointer-events: none;
+    }
+    @keyframes pop {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(2); opacity: 0; }
+    }
+    button {
+        position: fixed;
+        bottom: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: #ff4081;
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+    #previousButton {
+        left: 20px;
+    }
+
+    #nextButton {
+        right: 20px;
+        display: none; /* Hide the Next button initially */
+    }
+
+    button:hover {
+        background-color: #f8bbd0;
+    }
+</style>
+</head>
+<body>
+
+<h2>Drag the images into the relevant box:</h2>
+<div class="image-container">
+    <img id="drag1" src="0.7.png" draggable="true" ondragstart="drag(event)" width="200" height="200" alt="seven">
+    <img id="drag2" src="0.8.png" draggable="true" ondragstart="drag(event)" width="200" height="200" alt="eight">
+    <img id="drag3" src="0.9.png" draggable="true" ondragstart="drag(event)" width="200" height="200" alt="nine">
+</div>
+
+<div class="container">
+    <div class="box" id="box1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        seven
+    </div>
+    <div class="box" id="box2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        eight
+    </div>
+    <div class="box" id="box3" ondrop="drop(event)" ondragover="allowDrop(event)">
+        nine
+    </div>
+</div>
+
+<a href="1.html"><button id="previousButton">Previous</button></a>
+<a href="chat.html"><button id="nextButton">Next</button></a>
+
+<div id="well-done-message">Well Done!</div>
+
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var draggedImage = document.getElementById(data);
+        var dropTarget = ev.target;
+        // Get the category of the dragged image
+        var imageCategory = draggedImage.alt.toLowerCase();
+        // Get the text inside the drop target box and convert it to lowercase for comparison
+        var boxText = dropTarget.innerText.trim().toLowerCase();
+        // If the drop target is a box and the image category matches the box text, append the image to it
+        if (dropTarget.classList.contains('box') && imageCategory === boxText) {
+            dropTarget.innerHTML = ''; // Clear previous contents
+            dropTarget.appendChild(draggedImage.cloneNode(true));
+            // Remove the image from its original location
+            draggedImage.parentNode.removeChild(draggedImage);
+            checkCompletion();
+        }
+    }
+
+    function checkCompletion() {
+        var boxes = document.querySelectorAll('.box');
+        var allFilled = true;
+
+        boxes.forEach(function(box) {
+            if (box.children.length === 0) {
+                allFilled = false;
+            }
+        });
+
+        if (allFilled) {
+            document.getElementById('well-done-message').style.display = 'block';
+            document.getElementById('nextButton').style.display = 'block'; // Show Next button
+            popStars();
+        }
+    }
+
+    function popStars() {
+        var message = document.getElementById('well-done-message');
+        for (var i = 0; i < 10; i++) {
+            var star = document.createElement('div');
+            star.className = 'star';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            message.appendChild(star);
+            setTimeout((function(star) {
+                return function() { message.removeChild(star); };
+            })(star), 1000);
+        }
+    }
+</script>
+
+</body>
+</html>

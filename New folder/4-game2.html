@@ -1,0 +1,321 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width ,initial-scale=1">
+    <title>Numbers Game</title>
+    <link href="img/kidsZone.png" rel="icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script defer src="javascriptcode.js"></script>
+
+    <style>
+        body{
+            /* width: 100%; */
+            margin: 0px;
+            padding: 0px;
+            height: 90%;
+            background-image: url('img/bg11.jpg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            display: flex;
+            position: relative;
+            font-family: Cooper Black;
+        }
+
+        .border {
+            border: 0px solid black;
+        }
+
+        .border2 {
+            border: 1px solid red;
+        }
+
+        .numbers {
+            background-color: black;
+            color: darkgray;
+            cursor: pointer;
+            border-radius: 50%;
+            opacity: 0.85;
+        }
+
+        .bird {
+            opacity: 0;
+            width: 33%;
+            height: 34%;
+            animation: shake2 10s;
+            animation-iteration-count: initial;
+
+        }
+
+        .numbers:hover {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+            background-color: white;
+            border: 3px solid gray;
+            color: black;
+        }
+        h3{
+            margin-top: 13px;
+            opacity: 1;
+            color: gray;
+        }
+        ul {
+            width: 174%;
+            list-style-type: none;
+            margin-left: -15px;
+            margin-right: -15px;
+            padding: 0;
+            overflow: hidden;
+            background-color:black;
+            opacity: 0.85;
+            
+        }
+
+        li {
+            float: right;
+            padding-right: 30px;
+            margin-top: 11px;
+            margin-bottom: 0px;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #403850;
+            border-radius: 35%;
+        }
+
+        ul p {
+            margin-top: 2px;
+            margin-bottom: 5px;
+            float: left;
+            padding-left: 30px;
+        }
+        @keyframes shake2 {
+            0% {
+                opacity: 0.1;
+                transform: translate(0px, 1px) rotate(0deg);
+            }
+
+            10% {
+                opacity: 0.4;
+                transform: translate(15px, 2px) rotate(10deg);
+            }
+
+            20% {
+                opacity: 0.8;
+                transform: translate(30px, 4px) rotate(15deg);
+            }
+
+            30% {
+                opacity: 1;
+                transform: translate(45px, 8px) rotate(20deg);
+            }
+
+            40% {
+                opacity: 1;
+                transform: translate(50px, 8px) rotate(18deg);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(65px, 4px) rotate(12deg);
+            }
+            60% {
+                opacity: 1;
+                transform: translate(80px, 1px) rotate(10deg);
+            }
+            70% {
+                opacity: 1;
+                transform: translate(95px, 1px) rotate(0deg);
+            }
+            80% {
+                opacity: 0.8;
+                transform: translate(110px, 1px) rotate(0deg);
+            }
+            90% {
+                opacity: 0.4;
+                transform: translate(125px, 1px) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(135px, 1px) rotate(0deg);
+            }
+
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+            }
+
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <audio autoplay>
+        <source src="audio/game1Sound.mp3" type="audio/ogg">
+        <source src="audio/game1Sound.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <p id="chName"></p>
+                    <li><a href="1-home.html">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class=" " style=" width: 30%; height: 80% ;float: left ; position: absolute ; top: 0px ; bottom: 0px ; left :2% ;  margin: 150px 100px ; text-align: center">
+
+
+        <div class="mt-5 " style="width: 100% ; height: 10% ;">
+
+            <div style="width: 80% ; margin: auto auto">
+                <div id="one" value="1" onclick="show(this)" class=" numbers" style="text-align: center; margin:  2% ; height: 100% ; width: 45%  ;float: left ">
+                    <H1>1</H1>
+                </div>
+                <div id="two" value="2" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 45% ; ;float: left ">
+                    <H1>2</H1>
+                </div>
+            </div>
+        </div>
+
+
+        <div class=" " style="width: 100% ; height: 10% ; clear: both">
+
+            <div id="three" value="3" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 28%  ; ;float: left ">
+                <H1>3</H1>
+            </div>
+            <div id="four" value="4" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 28%  ;float: left">
+                <H1>4</H1>
+            </div>
+            <div id="five" value="5" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 28% ;float: left">
+                <H1>5</H1>
+            </div>
+
+        </div>
+        <div class=" " style="width: 100% ; height: 10% ; clear: both">
+
+            <div id="six" value="6" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 28%  ; ;float: left ">
+                <H1>6</H1>
+            </div>
+            <div id="seven" value="7" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 28%  ;float: left">
+                <H1>7</H1>
+            </div>
+            <div id="eight" value="8" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 28% ;float: left">
+                <H1>8</H1>
+            </div>
+        </div>
+        <div class=" " style="width: 100% ; height: 10% ; clear: both">
+            <div style="width: 80% ; margin: auto auto">
+                <div id="nine" value="9" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 45%  ;float: left ">
+                    <H1>9</H1>
+                </div>
+                <div id="ten" value="10" onclick="show(this)" class=" numbers" style="margin:  2% ; height: 100% ; width: 45% ; ;float: left ">
+                    <H1>10</H1>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="" style=" width: 50% ; height: 90% ; float: right ;margin-right: 150px; margin-top: 100px;">
+
+        <div id="divBird" style="margin: 0px  auto 0% auto ; width: 80% ; height: 70% ; border: 0px solid black">
+
+            <!-- <img id="showImg" src="" style=" visibility: hidden"> -->
+        </div>
+    </div>
+
+    <script>
+
+        function show(element) {
+            document.getElementById('divBird').innerHTML = "";
+            var elementID = element.getAttribute('id');
+
+            console.log(elementID)
+            var audio = new Audio('audio/' + elementID + '.mp3');
+            audio.play();
+
+            var n = element.getAttribute('value');
+            var divBird = document.getElementById('divBird');
+           
+            for (let i = 0; i < n; i++) {
+                var createBird = document.createElement("img");
+                createBird.setAttribute('class', 'bird');
+                createBird.setAttribute('src', 'img/71k8jhxjwlo.gif');
+                divBird.appendChild(createBird)
+            }
+            // document.getElementById('showImg').setAttribute('src', 'img/img2/' + elementID + '.png')
+            //  document.getElementById('showImg').style.visibility = 'visible';
+
+        }
+
+
+    </script>
+</body>
+
+
+
+
+</html>

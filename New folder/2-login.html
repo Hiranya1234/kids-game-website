@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<title>Login</title>
+	<link href="img/kidsZone.png" rel="icon">
+	<!-- <script defer src="javascriptcode.js"></script> -->
+	<script defer>
+		function emma() {
+		  var emmaChildName = document.getElementById("childName1").innerHTML;
+		  var emmaChildPic = document.getElementById("childPic1").getAttribute("src");
+		  localStorage.setItem("name", emmaChildName);
+		  localStorage.setItem("pic", emmaChildPic);
+		  document.getElementById("emmaGameLink").setAttribute("href",localStorage.getItem("game"));
+		}
+		function mark() {
+		  var markChildName = document.getElementById("childName2").innerHTML;
+		  var markChildPic = document.getElementById("childPic2").getAttribute("src");
+		  localStorage.setItem("name", markChildName);
+		  localStorage.setItem("pic", markChildPic);
+		  document.getElementById("markGameLink").setAttribute("href",localStorage.getItem("game"));
+		}
+		function marie() {
+		  var marieChildName = document.getElementById("childName3").innerHTML;
+		  var marieChildPic = document.getElementById("childPic3").getAttribute("src");
+		  localStorage.setItem("name", marieChildName);
+		  localStorage.setItem("pic", marieChildPic);
+		  document.getElementById("marieGameLink").setAttribute("href",localStorage.getItem("game"));
+		}
+		function oliver() {
+		  var oliverChildName = document.getElementById("childName4").innerHTML;
+		  var oliverChildPic = document.getElementById("childPic4").getAttribute("src");
+		  localStorage.setItem("name", oliverChildName);
+		  localStorage.setItem("pic", oliverChildPic);
+		  document.getElementById("oliverGameLink").setAttribute("href",localStorage.getItem("game"));
+		}
+		function floria() {
+		  var floriaChildName = document.getElementById("childName5").innerHTML;
+		  var floriaChildPic = document.getElementById("childPic5").getAttribute("src");
+		  localStorage.setItem("name", floriaChildName);
+		  localStorage.setItem("pic", floriaChildPic);
+		  document.getElementById("floriaGameLink").setAttribute("href",localStorage.getItem("game"));
+		}
+		function james() {
+		  var jamesChildName = document.getElementById("childName6").innerHTML;
+		  var jamesChildPic = document.getElementById("childPic6").getAttribute("src");
+		  localStorage.setItem("name", jamesChildName);
+		  localStorage.setItem("pic", jamesChildPic);
+		  document.getElementById("jamesGameLink").setAttribute("href",localStorage.getItem("game"));
+		}
+	</script>
+	<style>
+		body,html{
+            width: 100%;
+            margin: 0%;
+            background-image: url('img/bg5.jpg');
+            background-repeat: no-repeat;
+            background-size: 1366px 656px;
+            background-attachment: fixed;
+            background-position: center;
+        }
+		.sDiv{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            border-radius: 50%;
+            border: 2px solid black;
+            transition: width linear 0.5s;
+        }
+		h1{
+			font-family: Cooper Black;
+			/* font-family: Cursive; */
+			color:white;
+			font-weight: bolder;
+		}
+		.button:hover{
+			animation: shake 0.5s;
+			animation-iteration-count: infinite;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			transition-duration: 0.5s;
+			cursor:pointer;
+			text-align: center;
+		}
+		@keyframes shake {
+			0% { transform: translate(1px, 1px) rotate(0deg); }
+			10% { transform: translate(-1px, -2px) rotate(-1deg); }
+			20% { transform: translate(-3px, 0px) rotate(1deg); }
+			30% { transform: translate(3px, 2px) rotate(0deg); }
+			40% { transform: translate(1px, -1px) rotate(1deg); }
+			50% { transform: translate(-1px, 2px) rotate(-1deg); }
+			60% { transform: translate(-3px, 1px) rotate(0deg); }
+			70% { transform: translate(3px, 1px) rotate(-1deg); }
+			80% { transform: translate(-1px, -1px) rotate(1deg); }
+			90% { transform: translate(1px, 2px) rotate(0deg); }
+			100% { transform: translate(1px, -2px) rotate(-1deg); }
+		}
+		.animation {
+			position: relative;
+			animation: example 1s infinite;
+		}
+		@keyframes example {
+			0%,100% {left: 0;}
+			50% {left: 20px;}
+		}
+		#player-container #play-pause {
+            cursor: pointer;
+            text-indent: -999999px;
+            height: 100px;
+            width: 100px;
+            /* padding: 12px 18px; */
+            z-index: 2;
+            background-image: url(img/mute.png);
+            background-repeat: no-repeat !important;
+            /* background-position: center; */
+            /* background-size: 16px; */
+            background-repeat: no-repeat;
+            /* background-position: center; */
+            background-size: 70px;
+            /* background-color: gainsboro; */
+            float: right;
+            margin-right: 25px;
+            margin-top: 25px;
+        }
+
+        .play {
+            background-image: url(img/mute.png);
+        }
+
+        .pause {
+            background-image: url(img/sound.png) !important;
+        }
+	</style>
+</head>
+<body>
+	<!-- <audio id="track">
+        <source src="audio/backgroundSound.mp3" type="audio/mpeg" />
+    </audio>
+    <div id="player-container">
+        <div id="play-pause" class="play">Play</div>
+    </div>
+    <script defer>
+        var track = document.getElementById('track');
+        var controlBtn = document.getElementById('play-pause');
+        track.play();
+        controlBtn.className = "pause";
+        function playPause() {
+            if (track.paused) {
+                track.play();
+                controlBtn.className = "pause";
+            }
+            else {
+                track.pause();
+                controlBtn.className = "play";
+            }
+        }
+        controlBtn.addEventListener("click", playPause);
+        track.addEventListener("ended", function () {
+            controlBtn.className = "play";
+            playPause();
+        });
+    </script> -->
+	<a href="1-home.html">
+		<img class="btn animation" src="img/Arrow_512.webp" alt="" style="width: 7%;">
+	</a>
+	<div class="container text-center mx-auto">
+			<div class="row mx-auto">
+				<div class="col-lg-4 col-md-4">
+					<a href="" onclick="emma()" id="emmaGameLink">
+						<div class=" button btn " style="width: 65%;">
+							<img id="childPic1" class="sDiv img-fluid" src="img/My_Post (6).jpg" alt="" style="width: 100%;">
+							<h1 id="childName1">Emma</h1>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-4">
+					<a href="" onclick="mark()" id="markGameLink">
+						<div class=" button btn btn-default" style="width: 65%;">
+							<img id="childPic2" class="sDiv img-fluid" src="img/My_Post (5).jpg" alt="" style="width: 100%;">
+							<h1 id="childName2">Mark</h1>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-4 ">
+					<a href="" onclick="marie()" id="marieGameLink">
+						<div class=" button btn btn-default" style="width: 65%;">
+							<img id="childPic3" class="sDiv img-fluid" src="img/My_Post (3).jpg" alt="" style="width: 100%;">
+							<h1 id="childName3">Marie</h1>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="row mx-auto mt-2">
+				<div class="col-lg-4 col-md-4">
+					<a href="" onclick="oliver()" id="oliverGameLink">
+						<div class="button btn btn-default" style="width: 65%;">
+							<img id="childPic4" class="sDiv img-fluid" src="img/My_Post (1).jpg" alt="" style="width: 100%;">
+							<h1 id="childName4">Oliver</h1>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-4">
+					<a href="" onclick="floria()" id="floriaGameLink">
+						<div class="button btn btn-default" style="width: 65%;">
+							<img id="childPic5" class="sDiv img-fluid" src="img/My_Post (4).jpg" alt="" style="width: 100%;">
+							<h1 id="childName5">Floria</h1>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-4">
+					<a href="" onclick="james()" id="jamesGameLink">
+						<div class=" button btn btn-default" style="width: 65%;">
+							<img id="childPic6" class="sDiv img-fluid" src="img/My_Post (2).jpg" alt="" style="width: 100%;">
+							<h1 class="h" id="childName6">James</h1>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedded YouTube Video</title>
+<style>
+  /* Optional: Style for the video container */
+  #video-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<div id="video-container">
+  <div id="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/WzzW9PgsFoY?si=WWODy05UV9Pq9-cG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</div>
+
+
+
+<div>
+  <h2>Upload Image</h2>
+  <form id="image-upload-form" enctype="multipart/form-data">
+    <input type="file" id="image-file" name="image-file" accept="image/*">
+    <button type="submit">Upload</button>
+  </form>
+</div>
+
+<script>
+  // JavaScript to dynamically embed YouTube video
+  document.getElementById("video-upload-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const videoUrl = document.getElementById("video-url").value;
+    const videoId = extractVideoId(videoUrl);
+    if (videoId) {
+      embedYouTubeVideo(videoId);
+    } else {
+      alert("Please enter a valid YouTube video URL.");
+    }
+  });
+
+  // Function to extract video ID from YouTube URL
+ function extractVideoId(url) {
+    const videoIdMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
+    return videoIdMatch ? videoIdMatch[1] : null;
+  }
+
+//Function to embed YouTube video
+function embedYouTubeVideo(videoId) {
+const videoContainer = document.getElementById("video-container");
+videoContainer.innerHTML = ""; // Clear previous video, if any
+    const iframe = document.createElement("iframe");
+    iframe.setAttribute("width", "560");
+    iframe.setAttribute("height", "315");
+    iframe.setAttribute("src", `https://www.youtube.com/embed/${videoId}`);
+    iframe.setAttribute("title", "YouTube video player");
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+    iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    iframe.setAttribute("allowfullscreen", "");
+    videoContainer.appendChild(iframe);
+  }
+
+  // JavaScript to handle image upload
+  document.getElementById("image-upload-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new FormData();
+    const fileInput = document.getElementById("image-file");
+    formData.append("image", fileInput.files[0]);
+    // Send formData to server for processing or handle it in JavaScript as needed
+    console.log("Uploaded image:", formData.get("image"));
+    // Reset the form after processing
+    event.target.reset();
+  });
+</script>
+
+</body>
+</html>
+
+

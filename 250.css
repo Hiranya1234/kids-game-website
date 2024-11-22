@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: url("256.webp") no-repeat center center fixed;
+    background-size: cover; /* Cover the entire viewport */
+    background-color: #f0f8ff; /* Fallback color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden; /* Prevent scrolling if the image is larger */
+}
+
+/* Container styling */
+.container {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Header styling */
+h1 {
+    font-size: 36pt;
+    color: #ff4500; /* Bright and cheerful color */
+    margin-bottom: 20px;
+}
+
+/* Game buttons container */
+.games {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between buttons */
+}
+
+/* Game button styling */
+.game-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 24pt;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6347, #ffeb3b); /* Gradient background */
+    border-radius: 12px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.game-btn:hover {
+    background: linear-gradient(135deg, #ff4500, #ffeb3b); /* Darker gradient on hover */
+    transform: scale(1.05);
+}
+
+/* Button styling */
+.button.previous {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18pt;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6347, #ffeb3b); /* Gradient background */
+    border-radius: 12px;
+    transition: background 0.3s, transform 0.3s;
+    margin-top: 30px;
+}
+
+.button.previous:hover {
+    background: linear-gradient(135deg, #ff4500, #ffeb3b); /* Darker gradient on hover */
+    transform: scale(1.05);
+}

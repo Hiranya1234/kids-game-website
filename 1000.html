@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Guessing Game</title>
+  <link rel="stylesheet" href="18.css" />
+  <style>
+    #finishButton {
+      display: none; /* Hide finish button initially */
+    }
+  </style>
+</head>
+<body>
+  <h4>Guess the name of the animal shown in the picture!!</h4>
+  <div id="game-container">
+    <img id="animal-image" src="" alt="Animal Image">
+    <div class="options">
+      <div class="option" onclick="checkAnswer(this)"></div>
+      <div class="option" onclick="checkAnswer(this)"></div>
+      <div class="option" onclick="checkAnswer(this)"></div>
+    </div>
+    <div id="score">Score: 0</div>
+  </div>
+
+  <a href="subtract.html"><button class="btn">Previous</button></a><br>
+  <a href="61.html"><button id="finishButton" class="btn">Finish</button></a>
+
+  <script>
+    const animals = [
+      { name: 'Lion', image: 'lion.jpg' },
+      { name: 'Elephant', image: 'elephant.jpg' },
+      { name: 'Giraffe', image: 'giraffe.jpg' },
+      { name: 'Cow', image: 'cow1.jpg' },
+      { name: 'Donkey', image: 'donkey.jpg' },
+      { name: 'Monkey', image: 'monkey.jpg' },
+      { name: 'Rhino', image: 'rhino.png' },
+      { name: 'Horse', image: 'horse.jpg' },
+      { name: 'Dog', image: 'dog1.jpg' },
+      { name: 'Cat', image: 'cat1.png' },
+      { name: 'Pig', image: 'pig.jpg' },
+      { name: 'Tiger', image: 'tiger.jpg' },
+      { name: 'Panda', image: 'panda.png' },
+      { name: 'Polar Bear', image: 'polarbear.png' },
+      { name: 'Penguin', image: 'peguin.png' },
+      { name: 'Bird', image: 'bird.png' },
+      { name: 'Whale', image: 'whale.png' },
+      { name: 'Fish', image: 'fish.jpg' },
+      { name: 'Peacock', image: 'peacock.jpg' },
+      { name: 'Owl', image: 'owl.png' },
+      { name: 'Eagle', image: 'eagle.jpg' }, // Last animal
+    ];
+
+    let currentAnimalIndex = 0;
+    let score = 0;
+
+    function startGame() {
+      showNextAnimal();
+    }
+
+    function showNextAnimal() {
+      if (currentAnimalIndex < animals.length) {
+        const currentAnimal = animals[currentAnimalIndex];
+        const options = document.querySelectorAll('.option');
+
+        document.getElementById('animal-image').src = currentAnimal.image;
+
+        const correctOptionIndex = Math.floor(Math.random() * 3);
+        options.forEach((option, index) => {
+          option.textContent = index === correctOptionIndex ? currentAnimal.name : getRandomAnimalName();
+        });
+
+        currentAnimalIndex++;
+      } else {
+        alert(`Game Over! Your Score: ${score}`);
+        resetGame();
+      }
+    }
+
+    function checkAnswer(selectedOption) {
+      const selectedAnimalName = selectedOption.textContent;
+      const correctAnimalName = animals[currentAnimalIndex - 1].name;
+
+      if (selectedAnimalName === correctAnimalName) {
+        alert('Correct! Well done!');
+        score++;
+
+        // Check if the correct answer is "Eagle" to show the finish button
+        if (correctAnimalName === 'Eagle') {
+          document.getElementById('finishButton').style.display = 'block'; // Show the finish button
+        }
+      } else {
+        alert(`Wrong! The correct answer is ${correctAnimalName}`);
+      }
+
+      document.getElementById('score').textContent = `Score: ${score}`;
+      showNextAnimal();
+    }
+
+    function getRandomAnimalName() {
+      const randomAnimalIndex = Math.floor(Math.random() * animals.length);
+      return animals[randomAnimalIndex].name;
+    }
+
+    function resetGame() {
+      currentAnimalIndex = 0;
+      score = 0;
+      document.getElementById('score').textContent = 'Score: 0';
+      document.getElementById('finishButton').style.display = 'none'; // Hide the finish button
+      showNextAnimal();
+    }
+
+    document.addEventListener('DOMContentLoaded', startGame);
+  </script>
+</body>
+</html>

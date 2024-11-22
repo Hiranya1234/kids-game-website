@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    position: relative; /* Allows positioning of overlay */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, kid-friendly font */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden; /* Prevent scrollbars */
+    background: url("pic5.jpeg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Overlay for background */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* White color with 30% opacity */
+    z-index: -1; /* Place the overlay behind the content */
+    /* Animation for subtle movement effect */
+    animation: backgroundAnimation 15s infinite alternate;
+}
+
+/* Subtle background animation */
+@keyframes backgroundAnimation {
+    0% {
+        filter: brightness(100%);
+    }
+    50% {
+        filter: brightness(95%);
+    }
+    100% {
+        filter: brightness(100%);
+    }
+}
+
+.container {
+    text-align: center;
+    animation: fadeInUp 2s ease-in-out; /* Fade-in and slide-up animation */
+}
+
+/* Fade-in and Slide-up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 100px;
+    color: #1c1508; /* Dark color for better visibility */
+    margin-bottom: 20px;
+    animation: bounceIn 1s ease; /* Bounce-in animation */
+}
+
+/* Bounce-in Animation */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Buttons container */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between buttons */
+}
+
+/* Button Styling and Animation */
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    animation: buttonPulse 1s infinite; /* Pulsing animation */
+}
+
+/* Pulsing Animation */
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0.3);
+    }
+}
+
+.button:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Button Colors */
+.easy {
+    background-color: #4caf50; /* Green color for Easy */
+}
+
+.medium {
+    background-color: #ff9800; /* Orange color for Medium */
+}
+
+.hard {
+    background-color: #f44336; /* Red color for Hard */
+}
+
+.previous {
+    background-color: #2196F3; /* Blue color for Previous */
+    margin-top: 20px; /* Space above the Previous button */
+}
+
+/* Hover Effects */
+.easy:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.medium:hover {
+    background-color: #e68900; /* Darker orange on hover */
+}
+
+.hard:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+.previous:hover {
+    background-color: #1976D2; /* Darker blue on hover */
+}

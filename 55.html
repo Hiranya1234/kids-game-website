@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Children's Learning Homepage</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background-color: #fff8dc; /* Cornsilk background */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Changed to flex-start to lift content up */
+        height: 100vh;
+        text-align: center;
+        position: relative; /* To position Pooh image */
+        padding-top: 50px; /* Added padding to create space at the top */
+    }
+    h1 {
+        font-size: 48px;
+        color: #d2691e; /* Chocolate color */
+        margin-bottom: 40px;
+    }
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px; /* Added margin to create space above Pooh image */
+    }
+    .button {
+        width: 200px;
+        height: 200px;
+        background-color: #ffeb3b; /* Yellow button color */
+        border: none;
+        border-radius: 20px;
+        font-size: 24px;
+        color: #8b4513; /* SaddleBrown color */
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .button:hover {
+        background-color: #fdd835; /* Darker yellow hover color */
+        transform: scale(1.1);
+    }
+    .pooh-image {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 350px; /* Increased the size of the Pooh image */
+        height: auto;
+    }
+    .button-cont {
+        margin-top: 50px;
+    }
+
+    .button-cont button {
+        background-color: #fdd835; /* Light pink */
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .button-cont button:hover {
+        background-color: #e2d91f; /* Bright pink */
+    }
+</style>
+</head>
+<body>
+
+<h1>Welcome to the Learning Page!</h1>
+<div class="button-container">
+    <button class="button" onclick="location.href='51.html'">Numbers</button>
+    <button class="button" onclick="location.href='18.html'">Animals</button>
+    <button class="button" onclick="location.href='chat.html'">Fruits & Vegetables</button>
+    <button class="button" onclick="location.href='quiz.html'">Quizzes</button>
+</div>
+<div class="button-cont">
+    <button onclick="goToNextCategory()">Go to Main Menu</button>
+    
+</div>
+
+<script>
+    function goToNextCategory() {
+        // You can add logic here to redirect to the next category or any other action
+        window.location.href = "11.html";
+    }
+</script>
+
+
+<img src="10.png" alt="Pooh" class="pooh-image"> <!-- Pooh image -->
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+/* Body styling */
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: url("pic46.jpg") no-repeat center center fixed; /* Background image */
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Container styling with backdrop blur */
+.container {
+    max-width: 800px;
+    position: relative; /* Required for positioning the overlay */
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.6); /* Slightly transparent white background */
+    backdrop-filter: blur(10px); /* Apply blur effect to the background */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    /* Ensure the backdrop-filter is supported in modern browsers */
+}
+
+/* Header styling */
+header h1 {
+    font-size: 36pt;
+    color: #ff6347;
+    margin-bottom: 20px;
+}
+
+/* Story content styling */
+.story-content {
+    font-size: 18pt;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 20px;
+}
+
+/* Button styling */
+.back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18pt;
+    color: #fff;
+    background: #ff4500;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.back-btn:hover {
+    background: #ff6347;
+}/* Body styling */

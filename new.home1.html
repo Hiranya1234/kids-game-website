@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wonder Kid's World</title>
+    <style>
+      /* Ensure the page covers the whole screen */
+      body {
+        margin: 0;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        background: url("pic14.jpg") no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        text-align: center;
+        color: #fff8dc;
+        overflow: hidden;
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Main header */
+      h1 {
+        font-size: 4em;
+        color: black;
+        font-weight: bold;
+        font-family: "Fredoka One", cursive;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+        margin-top: 0px;
+        padding-bottom: 20px;
+      }
+
+      /* Container for Pooh images and buttons */
+      .content-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 150px; /* Space between Pooh, buttons, and animated Pooh */
+      }
+
+      /* Button container */
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 150px;
+        align-items: flex-start; /* Align buttons to the left */
+      }
+
+      /* Button styling */
+      .button {
+        width: 180px;
+        padding: 15px;
+        background-color: rgba(255, 183, 77, 0.9);
+        color: black;
+        font-weight: bold; /* Bold black font */
+        border: none;
+        border-radius: 12px;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Button hover effects */
+      .button:hover {
+        background-color: rgba(255, 140, 0, 0.9);
+        transform: scale(1.1);
+      }
+
+      /* Footer text */
+      .footer {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 1.2em;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Adjust the Pooh images styling */
+      /* Adjust the Pooh images styling */
+      /* Adjust the Pooh images styling */
+      .pooh-image {
+        max-width: 300px;
+        height: auto;
+        size: 100px;
+      }
+
+      /* Animated Pooh (right side) */
+      .animated-pooh {
+        position: absolute;
+        right: 120px;
+        bottom: 150px;
+        max-width: 400px; /* Size of the current Pooh */
+        height: auto;
+        animation: bounce 3s infinite;
+        size: 1000px; /* Apply the bounce animation */
+      }
+
+      /* New Animated Pooh (above the current one) */
+      .animated-pooh-top {
+        position: absolute;
+        right: 20px;
+        bottom: 450px; /* Adjust this value to position it above the existing Pooh */
+        max-width: 300px; /* Size of the new Pooh */
+        height: auto;
+        animation: bounce 3s infinite; /* Same bounce animation */
+      }
+
+      /* Keyframes for the bouncing Pooh animation */
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px); /* Bounce effect */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Wonder Kid's World</h1>
+
+    <!-- Content container for Pooh images and buttons -->
+    <div class="content-container">
+      <!-- Pooh Image on the left 
+      <img src="pic14--.jpg" alt="Pooh Icon" class="pooh-image" />-->
+
+      <!-- Buttons for games and learning -->
+      <div class="button-container">
+        <button class="button" onclick="location.href='250.html'">Games</button>
+        <button class="button" onclick="location.href='1.html'">
+          Learning
+        </button>
+        <button class="button" onclick="location.href='99.html'">
+          Knowledge
+        </button>
+      </div>
+    </div>
+
+    <!-- Existing Pooh Image (Right Side) -->
+    <img src="10.png" alt="Animated Pooh" class="animated-pooh" />
+
+    <!-- New Pooh Image on top of the existing one 
+    <img src="pic26.jpg" alt="Animated Pooh Top" class="animated-pooh-top" />-->
+
+    <!-- Footer section 
+    <div class="footer">
+      <p>Completely Free, Moderated 24/7</p>
+    </div>-->
+
+    <script>
+      function goToMainMenu() {
+        window.location.href = "11.html";
+      }
+    </script>
+  </body>
+</html>
